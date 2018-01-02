@@ -9,7 +9,7 @@ import (
 	"os"
 )
 
-func logger(flag string, msg string) {
+func logger(flag string, msg string) string {
 	// set log output.
 	f, err := os.OpenFile("server.log", os.O_RDWR | os.O_CREATE | os.O_APPEND, 0666)
 	if err != nil {
@@ -30,9 +30,10 @@ func logger(flag string, msg string) {
 		log.Println(msg)
 	}
 	fmt.Println(msg)
+	return msg
 }
 
-func handle(conn net.Conn) {
+func handle(conn net.Conn) string {
 	// Announce the connection & Log the Users IP address.
 	logger("INFO","Established Connection with Client " + string(conn.RemoteAddr().String()))
 	// Set Connection TimeOut Value.
@@ -46,6 +47,7 @@ func handle(conn net.Conn) {
 		logger("msg", "Got data from Client, Payload = " + ln)
 	}
 	defer conn.Close()
+	return logger("INFO","Connection Closed with Client " + string(conn.RemoteAddr().String()))
 }
 
 // Main Program Loop.
