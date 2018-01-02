@@ -44,13 +44,13 @@ func handle(conn net.Conn) string {
 	scanner := bufio.NewScanner(conn)
 	for scanner.Scan() {
 		ln := scanner.Text()
-		logger("INFO", "Got data from Client, Payload = " + ln)
+		logger("msg", "Got data from Client, Payload = " + ln)
 	}
 	defer conn.Close()
 	return logger("INFO","Connection Closed with Client " + string(conn.RemoteAddr().String()))
 }
 
-// Main Program Loop.
+// Main Program Loop
 func main() {
 	lsnr, err := net.Listen("tcp", "0.0.0.0:9000")
 	if err != nil {
