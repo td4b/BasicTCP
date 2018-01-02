@@ -44,7 +44,7 @@ func handle(conn net.Conn) string {
 	scanner := bufio.NewScanner(conn)
 	for scanner.Scan() {
 		ln := scanner.Text()
-		logger("msg", "Got data from Client, Payload = " + ln)
+		logger("INFO", "Got data from Client, Payload = " + ln)
 	}
 	defer conn.Close()
 	return logger("INFO","Connection Closed with Client " + string(conn.RemoteAddr().String()))
