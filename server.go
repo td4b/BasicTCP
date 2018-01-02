@@ -32,7 +32,6 @@ func logger(flag string, msg string) string {
 	fmt.Println(msg)
 	return msg
 }
-
 func handle(conn net.Conn) string {
 	// Announce the connection & Log the Users IP address.
 	logger("INFO","Established Connection with Client " + string(conn.RemoteAddr().String()))
@@ -49,7 +48,6 @@ func handle(conn net.Conn) string {
 	defer conn.Close()
 	return logger("INFO","Connection Closed with Client " + string(conn.RemoteAddr().String()))
 }
-
 // Main Program Loop
 func main() {
 	lsnr, err := net.Listen("tcp", "0.0.0.0:9000")
