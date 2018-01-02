@@ -34,8 +34,7 @@ func logger(flag string, msg string) {
 	fmt.Println(msg)
 }
 
-func handle(conn net.Conn){
-	// meow
+func handle(conn net.Conn) {
 	// Announce the connection & Log the Users IP address.
 	logger("INFO","Established Connection with Client " + string(conn.RemoteAddr().String()))
 	// Set Connection TimeOut Value.
@@ -53,7 +52,6 @@ func handle(conn net.Conn){
 
 // Main Loop
 func main() {
-	
 	lsnr, err := net.Listen("tcp", "0.0.0.0:9000")
 	if err != nil {
 		panic(err)
