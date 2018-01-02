@@ -10,14 +10,13 @@ import (
 )
 
 func logger(flag string, msg string) {
-	// set log output
+	// set log output.
 	f, err := os.OpenFile("server.log", os.O_RDWR | os.O_CREATE | os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatalln("Error, Failed to open log file.")
 	}
 	defer f.Close()
 	log.SetOutput(f)
-
 	// Set the flags to Switch.
 	switch flag {
 	case "INFO":
@@ -30,7 +29,6 @@ func logger(flag string, msg string) {
 		msg := "ERROR: " + msg
 		log.Println(msg)
 	}
-
 	fmt.Println(msg)
 }
 
@@ -50,7 +48,7 @@ func handle(conn net.Conn) {
 	defer conn.Close()
 }
 
-// Main Loop
+// Main Program Loop.
 func main() {
 	lsnr, err := net.Listen("tcp", "0.0.0.0:9000")
 	if err != nil {
