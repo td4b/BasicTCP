@@ -50,7 +50,7 @@ func handle(conn net.Conn) string {
 	return logger("INFO","Connection Closed with Client " + string(conn.RemoteAddr().String()))
 }
 
-// Main Program Loop
+// Main Program Loop.
 func main() {
 	lsnr, err := net.Listen("tcp", "0.0.0.0:9000")
 	if err != nil {
