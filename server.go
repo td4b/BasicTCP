@@ -9,6 +9,14 @@ import (
 	"os"
 )
 
+// Define the Protocol Handshake.
+var (
+	CH = []byte("0x001")
+	SH = []byte("0x002")
+	CA = []byte("0x003")
+	SA = []byte("0x004")
+)
+
 func logger(flag string, msg string) string {
 	// set log output.
 	f, err := os.OpenFile("server.log", os.O_RDWR | os.O_CREATE | os.O_APPEND, 0666)
@@ -47,6 +55,7 @@ func handle(conn net.Conn) string {
 		logger("msg", "Got data from Client, Payload = " + ln)
 	}
 	defer conn.Close()
+
 	return logger("INFO","Connection Closed with Client " + string(conn.RemoteAddr().String()))
 }
 
