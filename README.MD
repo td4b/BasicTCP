@@ -3,7 +3,7 @@
 
 A Basic, High Performance TCP Server & Client.
 
-*Features:*\n
+*Features:*<br>
 *Custom Protocol with Encrypted Communications between the Sender and Listener.*\n
 *Sideband Secret Key Exchange Between Client, Server and "Key Server" with TLS/SSL.*
 *Each Session is unique and cryptographically signed.*
