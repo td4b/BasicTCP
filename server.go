@@ -9,7 +9,13 @@ import (
 	"os"
 )
 
-// Define the Protocol Handshake.
+// Create the session table structure.
+type sessions struct {
+	clientaddr []string
+	uuid  	   []string
+}
+
+// Define the Protocol Handshake headers.
 var (
 	CH = []byte("0x001")
 	SH = []byte("0x002")
@@ -53,6 +59,8 @@ func handle(conn net.Conn) string {
 	for scanner.Scan() {
 		ln := scanner.Text()
 		logger("msg", "Got data from Client, Payload = " + ln)
+		header := string(ln)[0:5]
+		fmt.Println("Got header from payload: " + header)
 	}
 	defer conn.Close()
 
